@@ -45,6 +45,12 @@
 		A4737CD51E6024A000D6046E /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = A4737CC41E6024A000D6046E /* IQToolbar.m */; };
 		A4737CD61E6024A000D6046E /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = A4737CC61E6024A000D6046E /* IQUIView+IQKeyboardToolbar.m */; };
 		A4737CD71E6024A000D6046E /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A4737CC91E6024A000D6046E /* IQKeyboardManager.bundle */; };
+		A4737CDA1E602C2300D6046E /* TouchIDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A4737CD91E602C2300D6046E /* TouchIDManager.m */; };
+		A4737CDD1E6038B300D6046E /* NSData+keyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = A4737CDC1E6038B300D6046E /* NSData+keyChain.m */; };
+		A4737CE71E6053BE00D6046E /* SSKeychain.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4737CDF1E6053BE00D6046E /* SSKeychain.strings */; };
+		A4737CE81E6053BE00D6046E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4737CE11E6053BE00D6046E /* Info.plist */; };
+		A4737CE91E6053BE00D6046E /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = A4737CE31E6053BE00D6046E /* SSKeychain.m */; };
+		A4737CEA1E6053BE00D6046E /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = A4737CE51E6053BE00D6046E /* SSKeychainQuery.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +134,17 @@
 		A4737CC61E6024A000D6046E /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
 		A4737CC71E6024A000D6046E /* KeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardManager.h; sourceTree = "<group>"; };
 		A4737CC91E6024A000D6046E /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		A4737CD81E602C2300D6046E /* TouchIDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchIDManager.h; sourceTree = "<group>"; };
+		A4737CD91E602C2300D6046E /* TouchIDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchIDManager.m; sourceTree = "<group>"; };
+		A4737CDB1E6038B300D6046E /* NSData+keyChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+keyChain.h"; sourceTree = "<group>"; };
+		A4737CDC1E6038B300D6046E /* NSData+keyChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+keyChain.m"; sourceTree = "<group>"; };
+		A4737CE01E6053BE00D6046E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SSKeychain.strings; sourceTree = "<group>"; };
+		A4737CE11E6053BE00D6046E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4737CE21E6053BE00D6046E /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
+		A4737CE31E6053BE00D6046E /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
+		A4737CE41E6053BE00D6046E /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
+		A4737CE51E6053BE00D6046E /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
+		A4737CE61E6053BE00D6046E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SSKeychain.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,17 +177,22 @@
 		A4737C511E5FF3DC00D6046E /* ZFAlertView */ = {
 			isa = PBXGroup;
 			children = (
+				A4737CDE1E6053BE00D6046E /* SSKeychain */,
 				A4737CA51E6024A000D6046E /* IQKeyBoardManager */,
 				A4737C951E60243A00D6046E /* SVProgressHUD */,
 				A4737C6F1E60061C00D6046E /* Masonry */,
 				A4737C551E5FF3DC00D6046E /* AppDelegate.h */,
 				A4737C561E5FF3DC00D6046E /* AppDelegate.m */,
 				A4737C691E5FF40000D6046E /* ZFBaseAlertView.h */,
+				A4737CD81E602C2300D6046E /* TouchIDManager.h */,
+				A4737CD91E602C2300D6046E /* TouchIDManager.m */,
 				A4737C6A1E5FF40000D6046E /* ZFBaseAlertView.m */,
 				A4737C6C1E5FF47A00D6046E /* ZFPayAlertView.h */,
 				A4737C6D1E5FF47A00D6046E /* ZFPayAlertView.m */,
 				A4737C581E5FF3DC00D6046E /* ViewController.h */,
 				A4737C591E5FF3DC00D6046E /* ViewController.m */,
+				A4737CDB1E6038B300D6046E /* NSData+keyChain.h */,
+				A4737CDC1E6038B300D6046E /* NSData+keyChain.m */,
 				A4737C5B1E5FF3DC00D6046E /* Main.storyboard */,
 				A4737C5E1E5FF3DC00D6046E /* Assets.xcassets */,
 				A4737C601E5FF3DC00D6046E /* LaunchScreen.storyboard */,
@@ -323,6 +345,19 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		A4737CDE1E6053BE00D6046E /* SSKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				A4737CDF1E6053BE00D6046E /* SSKeychain.strings */,
+				A4737CE11E6053BE00D6046E /* Info.plist */,
+				A4737CE21E6053BE00D6046E /* SSKeychain.h */,
+				A4737CE31E6053BE00D6046E /* SSKeychain.m */,
+				A4737CE41E6053BE00D6046E /* SSKeychainQuery.h */,
+				A4737CE51E6053BE00D6046E /* SSKeychainQuery.m */,
+			);
+			path = SSKeychain;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -365,6 +400,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = A4737C461E5FF3DC00D6046E;
 			productRefGroup = A4737C501E5FF3DC00D6046E /* Products */;
@@ -381,10 +417,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4737CE81E6053BE00D6046E /* Info.plist in Resources */,
 				A4737CA21E60243A00D6046E /* SVProgressHUD.bundle in Resources */,
 				A4737C8A1E60061C00D6046E /* Info.plist in Resources */,
 				A4737CD71E6024A000D6046E /* IQKeyboardManager.bundle in Resources */,
 				A4737C621E5FF3DC00D6046E /* LaunchScreen.storyboard in Resources */,
+				A4737CE71E6053BE00D6046E /* SSKeychain.strings in Resources */,
 				A4737C5F1E5FF3DC00D6046E /* Assets.xcassets in Resources */,
 				A4737C5D1E5FF3DC00D6046E /* Main.storyboard in Resources */,
 			);
@@ -403,8 +441,10 @@
 				A4737CCE1E6024A000D6046E /* IQUIWindow+Hierarchy.m in Sources */,
 				A4737C6E1E5FF47A00D6046E /* ZFPayAlertView.m in Sources */,
 				A4737CCF1E6024A000D6046E /* IQKeyboardManager.m in Sources */,
+				A4737CDD1E6038B300D6046E /* NSData+keyChain.m in Sources */,
 				A4737CCD1E6024A000D6046E /* IQUIViewController+Additions.m in Sources */,
 				A4737CD01E6024A000D6046E /* IQKeyboardReturnKeyHandler.m in Sources */,
+				A4737CE91E6053BE00D6046E /* SSKeychain.m in Sources */,
 				A4737CCA1E6024A000D6046E /* IQNSArray+Sort.m in Sources */,
 				A4737C571E5FF3DC00D6046E /* AppDelegate.m in Sources */,
 				A4737CA31E60243A00D6046E /* SVProgressHUD.m in Sources */,
@@ -423,8 +463,10 @@
 				A4737CD11E6024A000D6046E /* IQSegmentedNextPrevious.m in Sources */,
 				A4737CA01E60243A00D6046E /* SVIndefiniteAnimatedView.m in Sources */,
 				A4737C941E60061C00D6046E /* ViewController+MASAdditions.m in Sources */,
+				A4737CEA1E6053BE00D6046E /* SSKeychainQuery.m in Sources */,
 				A4737CD41E6024A000D6046E /* IQTitleBarButtonItem.m in Sources */,
 				A4737C8C1E60061C00D6046E /* MASConstraint.m in Sources */,
+				A4737CDA1E602C2300D6046E /* TouchIDManager.m in Sources */,
 				A4737CCB1E6024A000D6046E /* IQUITextFieldView+Additions.m in Sources */,
 				A4737C8E1E60061C00D6046E /* MASLayoutConstraint.m in Sources */,
 				A4737C541E5FF3DC00D6046E /* main.m in Sources */,
@@ -449,6 +491,15 @@
 				A4737C611E5FF3DC00D6046E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A4737CDF1E6053BE00D6046E /* SSKeychain.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4737CE01E6053BE00D6046E /* en */,
+				A4737CE61E6053BE00D6046E /* zh-Hant */,
+			);
+			name = SSKeychain.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -193,7 +193,7 @@
 - (UILabel *)amountLabel {
     if (!_amountLabel) {
         _amountLabel = [[UILabel alloc] init];
-        _amountLabel.text = @"Amount: $10";
+//        _amountLabel.text = @"Amount: $10";
         _amountLabel.textColor = [UIColor blackColor];
         _amountLabel.font = [UIFont boldSystemFontOfSize:16];
         [self addSubview:_amountLabel];
