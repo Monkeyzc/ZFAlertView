@@ -14,6 +14,7 @@
 
 @interface ViewController ()
 @property (nonatomic, strong, readwrite) ZFPayAlertView *payAlertView;
+@property (nonatomic, strong, readwrite) UISwitch *touchIDSwitch;
 @end
 
 @implementation ViewController
@@ -31,12 +32,12 @@
     BOOL supportTouchIDResult = [[TouchIDManager shareInstance] checkDeviceSupportTouchID];
     NSLog(@"%d", supportTouchIDResult);
     if (supportTouchIDResult) {
-        UISwitch *touchIDSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(CGRectGetMaxX(btn.frame), 40, 40, 60)];
-        [touchIDSwitch addTarget:self action:@selector(switchTouchID:) forControlEvents: UIControlEventValueChanged];
-        [self.view addSubview:touchIDSwitch];
+        self.touchIDSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(CGRectGetMaxX(btn.frame), 40, 40, 60)];
+        [self.touchIDSwitch addTarget:self action:@selector(switchTouchID:) forControlEvents: UIControlEventValueChanged];
+        [self.view addSubview:self.touchIDSwitch];
         
         NSString *touchIDConfigure = [[NSUserDefaults standardUserDefaults] objectForKey: touchID_userDefault_key];
-        touchIDSwitch.on = [touchIDConfigure isEqualToString:@"Yes"] ? YES : NO;
+        self.touchIDSwitch.on = [touchIDConfigure isEqualToString:@"Yes"] ? YES : NO;
     }
     
     // 测试指纹数据库改变 或者删除
@@ -78,21 +79,54 @@
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [SVProgressHUD dismiss];
+            
+            NSString *touchIDConfigure = [[NSUserDefaults standardUserDefaults] objectForKey: touchID_userDefault_key];
+            if ([touchIDConfigure isEqualToString:@"Yes"] == NO) {
+                NSLog(@"提示用户开启touch id 功能");
+                
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示用户开启touch id 功能" message:@"开启touch id功能, 让您爽的飞起!" preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *laterAction = [UIAlertAction actionWithTitle:@"以后" style: UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    NSLog(@"用户以后设置");
+                }];
+                
+                UIAlertAction *setAction = [UIAlertAction actionWithTitle:@"设置" style: UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    NSLog(@"现在设置");
+                    
+                    [self configureTouchID];
+                }];
+                
+                [alert addAction: laterAction];
+                [alert addAction: setAction];
+                
+                [self presentViewController:alert animated:YES completion:nil];
+            }
+            
         });
     };
     [payAlertView show];
 }
 
+- (void)configureTouchID {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[TouchIDManager shareInstance] configureTouchIDWithSuccessBlock:^{
+            NSLog(@"配置成功");
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.touchIDSwitch setOn:YES animated:YES];
+            });
+        } failedBlock:^{
+            NSLog(@"配置失败");
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.touchIDSwitch setOn:NO animated:YES];
+            });
+         
+        }];
+    });
+}
+
 - (void)switchTouchID:(UISwitch *)touchIDSwitch {
     if (touchIDSwitch.isOn) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-          [[TouchIDManager shareInstance] configureTouchIDWithSuccessBlock:^{
-              NSLog(@"配置成功");
-          } failedBlock:^{
-              NSLog(@"配置失败");
-              touchIDSwitch.on = NO;
-          }];
-        });
+        [self configureTouchID];
     } else {
         [[TouchIDManager shareInstance] deleteTouchIDConfigure];
     }
