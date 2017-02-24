@@ -14,7 +14,8 @@
 
 @interface ViewController ()
 @property (nonatomic, strong, readwrite) ZFPayAlertView *payAlertView;
-@property (nonatomic, strong, readwrite) UISwitch *touchIDSwitch;
+
+@property (weak, nonatomic) IBOutlet UISwitch *touchIDSwitch;
 @end
 
 @implementation ViewController
@@ -23,19 +24,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(40, 40, 80, 80)];
-    btn.backgroundColor = [UIColor purpleColor];
-    [btn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
-    
-    
     BOOL supportTouchIDResult = [[TouchIDManager shareInstance] checkDeviceSupportTouchID];
     NSLog(@"%d", supportTouchIDResult);
     if (supportTouchIDResult) {
-        self.touchIDSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(CGRectGetMaxX(btn.frame), 40, 40, 60)];
-        [self.touchIDSwitch addTarget:self action:@selector(switchTouchID:) forControlEvents: UIControlEventValueChanged];
-        [self.view addSubview:self.touchIDSwitch];
-        
         NSString *touchIDConfigure = [[NSUserDefaults standardUserDefaults] objectForKey: touchID_userDefault_key];
         self.touchIDSwitch.on = [touchIDConfigure isEqualToString:@"Yes"] ? YES : NO;
     }
@@ -44,7 +35,7 @@
 //    [NSData deleteDataFromKeyChainWithKey: touchID_keyChain_key];
 }
 
-- (void)clickBtn {
+- (IBAction)clickBtn:(id)sender {
     
     NSString *touchIDConfigure = [[NSUserDefaults standardUserDefaults] objectForKey: touchID_userDefault_key];
     NSLog(@"touchIDConfigure: %@", touchIDConfigure);
@@ -124,7 +115,7 @@
     });
 }
 
-- (void)switchTouchID:(UISwitch *)touchIDSwitch {
+- (IBAction)switchTouchID:(UISwitch *)touchIDSwitch {
     if (touchIDSwitch.isOn) {
         [self configureTouchID];
     } else {

@@ -18,7 +18,7 @@
 
         self.frame = [UIScreen mainScreen].bounds;
         self.backgroundColor = [UIColor blackColor];
-        self.alpha = 0.6;
+        self.alpha = 0.8;
         
         self.allowTapBackgroundToDimiss = YES;
         [self configureSubviews];
